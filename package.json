@@ -1,0 +1,25 @@
+{
+  "name": "3wordstory",
+  "version": "1.0.0",
+  "description": "3 word story multiplayer game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Baterodalo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baterodalo/3wordstory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baterodalo/3wordstory/issues"
+  },
+  "homepage": "https://github.com/baterodalo/3wordstory#readme"
+}

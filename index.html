@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-User 3-Word Input</title>
+</head>
+<body>
+    <h1>Multi-User 3-Word Input</h1>
+
+    <label for="inputField">Enter 3 words:</label>
+    <input type="text" id="inputField" placeholder="E.g., Word1 Word2 Word3">
+    <button id="appendButton">Append</button>
+    <button id="resetButton">Reset</button>
+
+    <br><br>
+
+    <textarea id="outputText" rows="10" cols="40" readonly></textarea>
+
+    <script>
+        const inputField = document.getElementById("inputField");
+        const appendButton = document.getElementById("appendButton");
+        const resetButton = document.getElementById("resetButton");
+        const outputText = document.getElementById("outputText");
+
+        const ws = new WebSocket(`ws://${window.location.host}`);
+
+        // Handle incoming messages from the server
+        ws.onmessage = (event) => {
+            outputText.value = event.data;
+        };
+
+        // Append button click event
+        appendButton.addEventListener("click", () => {
+            const inputText = inputField.value.trim();
+            if (inputText !== "") {
+                const words = inputText.split(" ");
+                if (words.length === 3) {
+                    ws.send(inputText);
+                    inputField.value = "";
+                } else {
+                    alert("Please enter exactly 3 words separated by spaces.");
+                }
+            } else {
+                alert("Input cannot be empty.");
+            }
+        });
+
+        // Reset button click event
+        resetButton.addEventListener("click", () => {
+            ws.send("RESET");
+        });
+    </script>
+</body>
+</html>
