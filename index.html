@@ -8,8 +8,9 @@
 
     <label for="inputField">Enter 3 words:</label>
     <input type="text" id="inputField" placeholder="E.g., Word1 Word2 Word3">
-    <button id="appendButton">Append</button>
-    <button id="resetButton">Reset</button>
+    <button id="appendButton" onclick="updateTextarea()">Append</button>
+    <button id="resetButton" onclick="updateTextarea()">Reset</button>
+
 
     <br><br>
 
@@ -48,6 +49,20 @@
         resetButton.addEventListener("click", () => {
             ws.send("RESET");
         });
+    </script>
+
+    <script>
+        // Example variable holding the text
+        var newText = inputText.split(" ");
+
+        // Function to update the textarea
+        function updateTextarea() {
+            // Get the textarea element by its ID
+            var textarea = document.getElementById("outputText");
+
+            // Set the textarea's value to the value stored in the variable
+            textarea.value = textarea + ' ' + newText;
+        }
     </script>
 </body>
 </html>
