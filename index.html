@@ -18,7 +18,8 @@
 
     <script>
         // Example variable holding the text
-        var newText = inputText.split(" ");
+        var newText = document.getElementById("inputField").value
+        //inputText.split(" ");
 
         // Function to update the textarea
         function updateTextarea() {
@@ -26,7 +27,7 @@
             var textarea = document.getElementById("outputText");
 
             // Set the textarea's value to the value stored in the variable
-            textarea.value = newText;
+            textarea.value = textarea + ' ' + newText;
         }
     </script>
 </body>
